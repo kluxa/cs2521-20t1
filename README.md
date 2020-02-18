@@ -4,9 +4,9 @@ Code for COMP2521 [20t1]
 ## Helpful Links
 ### Debugging and GDB
 - [Learning Debugging](https://www.cse.unsw.edu.au/~learn/debugging/)
-- [CSE GDB Tutorial](https://www.cse.unsw.edu.au/~learn/debugging/modules/all_gdb/)
-  - This tutorial was written by Liz Willer, a brilliant CSE tutor. If you want to learn how to better debug C code, I highly recommend this.
-- [Quick GDB Tutorial](https://www.youtube.com/watch?v=bWH-nL7v5F4)
+- [GDB Tutorials](https://www.cse.unsw.edu.au/~learn/debugging/modules/all_gdb/)
+  - These tutorials were written by Liz Willer, a brilliant CSE tutor. If you want to learn how to better debug C code, I highly recommend this.
+- [Quick GDB Video Tutorial](https://www.youtube.com/watch?v=bWH-nL7v5F4)
 
 ### Visualisers
 - [Data Structure Visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
