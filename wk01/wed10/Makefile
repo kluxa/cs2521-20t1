@@ -1,13 +1,12 @@
 
 CC = gcc
 CFLAGS = -Wall -Werror -std=c11
-BINS = sumList listRefresher
+BINS = sumList
 
 .PHONY: all
 all: $(BINS)
 
 sumList: sumList.c list.c
-listRefresher: listRefresher.c list.c
 
 .PHONY: clean
 clean:
