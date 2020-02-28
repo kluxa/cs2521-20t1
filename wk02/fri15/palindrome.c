@@ -17,5 +17,14 @@ int main(int argc, char *argv[]) {
 }
 
 bool isPalindrome(char *str) {
-	return false;
+	int l = 0;
+	int r = strlen(str) - 1;
+	while (l < r) {
+		if (str[l] != str[r]) {
+			return false;
+		}
+		l++;
+		r--;
+	}
+	return true;
 }

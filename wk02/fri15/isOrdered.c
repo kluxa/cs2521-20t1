@@ -7,7 +7,15 @@
 #include "list.h"
 
 bool isOrdered(List l) {
-	return false;
+	if (l == NULL) {
+		return true;
+	} else if (l->next == NULL) {
+		return true;
+	} else if (l->value > l->next->value) {
+		return false;
+	} else {
+		return isOrdered(l->next);
+	}
 }
 
 int main(void) {
@@ -38,6 +46,10 @@ int main(void) {
 	int A7[] = {7, 7, 7};
 	List l7 = arrayToList(A7, 3);
 	assert(isOrdered(l7));
+
+	int A8[] = {7, 4, 5};
+	List l8 = arrayToList(A8, 3);
+	assert(!isOrdered(l8));
 
 	printf("Tests passed!\n");
 }
