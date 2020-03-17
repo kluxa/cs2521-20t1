@@ -10,7 +10,14 @@
  * height of the binary tree.
  */
 int printHeightDiff(BSTree t) {
-    return 0;
+    if (t == NULL) {
+        return -1;
+    }
+
+    int lh = printHeightDiff(t->left);
+    int rh = printHeightDiff(t->right);
+    printf("At node %d, difference is %d\n", t->value, lh - rh);
+    return 1 + (lh > rh ? lh : rh);
 }
 
 /**
@@ -20,7 +27,22 @@ int printHeightDiff(BSTree t) {
  * subtree and right subtree is no greater than 1.
  */
 int isHeightBalanced(BSTree t) {
-    return 0;
+    if (t == NULL) {
+        return -1;
+    }
+
+    int lh = isHeightBalanced(t->left);
+    int rh = isHeightBalanced(t->right);
+
+    if (lh == NOT_HEIGHT_BALANCED || rh == NOT_HEIGHT_BALANCED) {
+        return NOT_HEIGHT_BALANCED;
+    }
+
+    if (abs(lh - rh) > 1) {
+        return NOT_HEIGHT_BALANCED;
+    } else {
+        return 1 + (lh > rh ? lh : rh);
+    }
 }
 
 /**
@@ -31,5 +53,36 @@ int isHeightBalanced(BSTree t) {
  *   width of the subtrees
  */
 int BSTWidth(BSTree t) {
-    return 0;
+    if (t == NULL) {
+        return 0;
+    } else {
+        return 3 + BSTWidth(t->left) + BSTWidth(t->right);
+    }
+}
+
+/**
+ * Deletes  all  leaves  from the given tree and returns the root of the
+ * updated tree.
+ */
+BSTree deleteLeaves(BSTree t) {
+    // empty tree, nothing to delete
+    if (t == NULL) {
+        return NULL;
+    
+    // leaf, free it and return the empty tree
+    } else if (t->left == NULL && t->right == NULL) {
+        free(t);
+        return NULL;
+    
+    // Delete  leaves  from the left subtree and update the
+    // left pointer just in  case  the  root  of  the  left
+    // subtree changes. In most cases, the root of the left
+    // subtree  won't  change, but if it is a leaf, then it
+    // will be deleted and we would end up  with  an  empty
+    // tree. Then do the same for the right subtree.
+    } else {
+        t->left = deleteLeaves(t->left);
+        t->right = deleteLeaves(t->right);
+        return t;
+    }
 }
