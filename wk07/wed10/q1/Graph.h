@@ -71,7 +71,7 @@ void GraphFree(Graph g);
 // General Graph Functions
 
 /**
- * Returns the number of edges in the given Graph.
+ * Returns the number of vertices in the given Graph.
  */
 int GraphNumVertices(Graph g);
 
