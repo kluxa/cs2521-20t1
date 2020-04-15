@@ -21,7 +21,29 @@ static List listUnlinkNode(List ls, List node);
 
 List selectSort(List ls) {
 	List copy = copyList(ls);
-	return copy;
+
+	// Remaining list: 5 -> 6 -> 2 -> 1 -> X
+
+	// Result list: 6 -> X
+	// Remaining list: 5 -> 2 -> 1 -> X
+
+	// Result list: 5 -> 6 -> X
+	// Remaining list: 2 -> 1 -> X
+
+	// ...until nothing left in the remaining list
+
+	List result = NULL;
+	while (copy != NULL) {
+		List max = listMax(copy);
+		copy = listUnlinkNode(copy, max);
+
+		// result: 5 -> 6 -> X
+		// max: 2
+		max->next = result;
+		result = max;
+	}
+
+	return result;
 }
 
 

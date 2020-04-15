@@ -5,10 +5,15 @@
 #include "isStableSort.h"
 #include "Item.h"
 
-
+static void bubbleSort(Item A[], int size);
+static void swap(Item A[], int i, int j);
 
 bool isStableSort(Item original[], Item sorted[], int size) {
-	return true;
+	Item copy[size];
+	arrayCopy(copy, original, size);
+	bubbleSort(copy, size);
+	bool result = arraysEqual(copy, sorted, size);
+	return result;
 }
 
 
@@ -41,8 +46,6 @@ bool isStableSort(Item original[], Item sorted[], int size) {
 
 
 
-static void bubbleSort(Item A[], int size);
-static void swap(Item A[], int i, int j);
 
 // Known to be stable
 static void bubbleSort(Item A[], int size) {
