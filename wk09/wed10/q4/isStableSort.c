@@ -16,37 +16,6 @@ bool isStableSort(Item original[], Item sorted[], int size) {
 	return result;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Known to be stable
 static void bubbleSort(Item A[], int size) {
 	bool swapped;

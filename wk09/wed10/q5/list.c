@@ -18,46 +18,37 @@ static List listMax(List ls);
 // returns the head of the updated list
 static List listUnlinkNode(List ls, List node);
 
+// We copy the original list. Then we repeatedly remove
+// the  node containing the largest value from the copy
+// list and add it to the beginning of a new list until
+// the  copy  list  is  empty.  We should end up with a
+// sorted list, which we just return.
+
+// Example:
+// Result list: X
+// Remaining list: 5 -> 6 -> 2 -> 1 -> X
+
+// Result list: 6 -> X
+// Remaining list: 5 -> 2 -> 1 -> X
+
+// Result list: 5 -> 6 -> X
+// Remaining list: 2 -> 1 -> X
+
+// ...until nothing left in the remaining list
 
 List selectSort(List ls) {
 	List copy = copyList(ls);
-
-	// Remaining list: 5 -> 6 -> 2 -> 1 -> X
-
-	// Result list: 6 -> X
-	// Remaining list: 5 -> 2 -> 1 -> X
-
-	// Result list: 5 -> 6 -> X
-	// Remaining list: 2 -> 1 -> X
-
-	// ...until nothing left in the remaining list
 
 	List result = NULL;
 	while (copy != NULL) {
 		List max = listMax(copy);
 		copy = listUnlinkNode(copy, max);
-
-		// result: 5 -> 6 -> X
-		// max: 2
 		max->next = result;
 		result = max;
 	}
 
 	return result;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Produces a copy of the given list
 static List copyList(List ls) {
@@ -144,11 +135,3 @@ static List newNode(int value) {
 	n->next = NULL;
 	return n;
 }
-
-
-
-// We copy the original list. Then we repeatedly remove
-// the  node containing the largest value from the copy
-// list and add it to the beginning of a new list until
-// the  copy  list  is  empty.  We should end up with a
-// sorted list, which we just return.
